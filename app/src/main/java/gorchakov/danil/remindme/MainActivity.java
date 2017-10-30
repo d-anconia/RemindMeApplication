@@ -11,7 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import gorchakov.danil.remindme.apadter.TabsPagerFragmentAdapter;
+import gorchakov.danil.remindme.apadter.TabsFragmentAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initToolBar(){
+    private void initToolBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private void initTabs() {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        TabsPagerFragmentAdapter adapter = new TabsPagerFragmentAdapter(getSupportFragmentManager());
+        TabsFragmentAdapter adapter = new TabsFragmentAdapter(this, getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -66,15 +66,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 drawerLayout.closeDrawers();
-                switch (item.getItemId()){
-                    case R.id.actionNotification: showNotificationTab();
+                switch (item.getItemId()) {
+                    case R.id.actionNotification:
+                        showNotificationTab();
                 }
                 return true;
             }
         });
     }
 
-    private void showNotificationTab(){
+    private void showNotificationTab() {
         viewPager.setCurrentItem(Constants.TAB_TWO);
     }
 }
