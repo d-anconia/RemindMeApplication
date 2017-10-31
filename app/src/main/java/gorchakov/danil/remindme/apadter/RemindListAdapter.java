@@ -15,6 +15,10 @@ import gorchakov.danil.remindme.dto.RemindDto;
 
 public class RemindListAdapter extends RecyclerView.Adapter<RemindListAdapter.RemindViewHolder> {
 
+    public void setData(List<RemindDto> data) {
+        this.data = data;
+    }
+
     private List<RemindDto> data;
 
     public RemindListAdapter(List<RemindDto> data) {
